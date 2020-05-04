@@ -22,22 +22,32 @@ const reset = () => {
  renderNewPic()
 }
 
+const onMakeDecision = () => {
+  const randomNum = Math.floor(Math.random() * app.options.length)
+  const option = app.options[randomNum]
+  alert(option)
+  console.log(randomNum)
+}
+
 const renderNewPic = () => {
 const template = (
   <div>
     <h1>{app.title}</h1>
     <p>{app.subtitle && app.subtitle}</p>
-    <p>{app.options && app.options.length > 0 ? `options: ${app.options}` : 'no options yet'}</p>
-    <p>{app.options.length}</p>
+    <p>{app.options && app.options.length > 0 ? 'Here are your options' : 'no options yet'}</p>
+    <button disabled={!app.options.length} onClick={onMakeDecision}>What Should I do?</button>
+    <button onClick={reset}>reset</button>
     <ol>
-      <li>item one</li>
-      <li>item two</li>
+    {
+      app.options.map((option) => {
+        return <li key={option}>{option}</li>
+      })
+    }
     </ol>
     <form onSubmit={onFormSubmit}>
       <input type='text' name='option'/>
       <button>Add Option</button>
     </form>
-    <button onClick={reset}>reset</button>
   </div>
 );
 ReactDOM.render(template, appRoot)

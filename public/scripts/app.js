@@ -24,6 +24,13 @@ var reset = function reset() {
   renderNewPic();
 };
 
+var onMakeDecision = function onMakeDecision() {
+  var randomNum = Math.floor(Math.random() * app.options.length);
+  var option = app.options[randomNum];
+  alert(option);
+  console.log(randomNum);
+};
+
 var renderNewPic = function renderNewPic() {
   var template = React.createElement(
     'div',
@@ -41,26 +48,28 @@ var renderNewPic = function renderNewPic() {
     React.createElement(
       'p',
       null,
-      app.options && app.options.length > 0 ? 'options: ' + app.options : 'no options yet'
+      app.options && app.options.length > 0 ? 'Here are your options' : 'no options yet'
     ),
     React.createElement(
-      'p',
-      null,
-      app.options.length
+      'button',
+      { disabled: !app.options.length, onClick: onMakeDecision },
+      'What Should I do?'
+    ),
+    React.createElement(
+      'button',
+      { onClick: reset },
+      'reset'
     ),
     React.createElement(
       'ol',
       null,
-      React.createElement(
-        'li',
-        null,
-        'item one'
-      ),
-      React.createElement(
-        'li',
-        null,
-        'item two'
-      )
+      app.options.map(function (option) {
+        return React.createElement(
+          'li',
+          { key: option },
+          option
+        );
+      })
     ),
     React.createElement(
       'form',
@@ -71,11 +80,6 @@ var renderNewPic = function renderNewPic() {
         null,
         'Add Option'
       )
-    ),
-    React.createElement(
-      'button',
-      { onClick: reset },
-      'reset'
     )
   );
   ReactDOM.render(template, appRoot);
