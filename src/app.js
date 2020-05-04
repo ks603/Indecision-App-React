@@ -1,58 +1,50 @@
-console.log('App is running')
-
-let app = {
-  title: 'Indecision App',
-  subtitle: 'Title',
-  options: []
+class Header extends React.Component {
+  render() {
+    return (
+      <div>
+      <h1>Indecision</h1>
+      <h2>Put your life in the hands of a computer</h2>
+      </div>
+    )}
 }
 
-const onFormSubmit = (e) => {
-  e.preventDefault()
-  
-  const option = e.target.elements.option.value
-
-  if (option) {
-    app.options.push(option)
-    e.target.elements.option.value = ''
-    renderNewPic()
+class Action extends React.Component {
+  render() {
+    return (
+      <div>
+        <button>What should I do?</button>
+      </div>
+    )
   }
 }
-const reset = () => {
- app.options = []
- renderNewPic()
+
+class Options extends React.Component {
+  render() {
+    return (
+      <div>
+        <li>Some text</li>
+      </div>
+    )
+  }
 }
 
-const onMakeDecision = () => {
-  const randomNum = Math.floor(Math.random() * app.options.length)
-  const option = app.options[randomNum]
-  alert(option)
-  console.log(randomNum)
+class AddOption extends React.Component {
+  render() {
+    return (
+      <div>
+        <p>some tex</p>
+      </div>
+    )
+  }
 }
 
-const renderNewPic = () => {
-const template = (
+const jsx = (
   <div>
-    <h1>{app.title}</h1>
-    <p>{app.subtitle && app.subtitle}</p>
-    <p>{app.options && app.options.length > 0 ? 'Here are your options' : 'no options yet'}</p>
-    <button disabled={!app.options.length} onClick={onMakeDecision}>What Should I do?</button>
-    <button onClick={reset}>reset</button>
-    <ol>
-    {
-      app.options.map((option) => {
-        return <li key={option}>{option}</li>
-      })
-    }
-    </ol>
-    <form onSubmit={onFormSubmit}>
-      <input type='text' name='option'/>
-      <button>Add Option</button>
-    </form>
+    <Header />
+    <Action />
+    <Options />
+    <AddOption />
   </div>
-);
-ReactDOM.render(template, appRoot)
-}
-const appRoot = document.getElementById('app');
+)
 
-
-renderNewPic()
+ReactDOM.render(jsx, document.getElementById('app'))
