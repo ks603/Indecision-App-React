@@ -1,1 +1,15 @@
-console.log('app.js is,mm!!')
+import validator from 'validator'
+
+console.log(validator.isEmail('test@gmail'))
+
+import senior, { isAdult, canDrink } from './person.js'
+import def, { square, add} from './utils'
+
+console.log('app.js is,mm ss!!')
+console.log(square(4))
+console.log(add(3, 5))
+console.log(def(100, 50))
+
+console.log(isAdult(5))
+console.log(canDrink(21))
+console.log(senior(63))
