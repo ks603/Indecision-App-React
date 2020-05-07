@@ -1,15 +1,21 @@
-import validator from 'validator'
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-console.log(validator.isEmail('test@gmail'))
+const template = React.createElement('p', {}, 'testing123')
+ReactDOM.render(template, document.getElementById('app'))
 
-import senior, { isAdult, canDrink } from './person.js'
-import def, { square, add} from './utils'
+// import validator from 'validator'
 
-console.log('app.js is,mm ss!!')
-console.log(square(4))
-console.log(add(3, 5))
-console.log(def(100, 50))
+// console.log(validator.isEmail('test@gmail.com'))
 
-console.log(isAdult(5))
-console.log(canDrink(21))
-console.log(senior(63))
+// import senior, { isAdult, canDrink } from './person.js'
+// import def, { square, add} from './utils'
+
+// console.log('app.js is,mm ss!!')
+// console.log(square(4))
+// console.log(add(3, 5))
+// console.log(def(100, 50))
+
+// console.log(isAdult(5))
+// console.log(canDrink(21))
+// console.log(senior(66))
