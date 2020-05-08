@@ -15,7 +15,7 @@ import OptionModal from './OptionModal'
   clearModal = () => {
     this.setState(() => {
       return {
-        selectedOption: ''
+        selectedOption: undefined
       }
     })
   }
@@ -45,7 +45,7 @@ import OptionModal from './OptionModal'
 
   handleAddOption = (option) => {
     if (!option) {
-      return 'enter valid value to add item'
+      return 'Enter valid value to add item'
     } else if (this.state.options.indexOf(option) > -1) {
       return 'This option already exist'
     }
@@ -84,17 +84,21 @@ import OptionModal from './OptionModal'
     return (
       <div>
         <Header subtitle= {subtitle} />
-        <Action hasOptions={this.state.options.length > 0} 
-        handlePick={this.handlePick}
-        />
-        <Options 
-          options={this.state.options} 
-          handleDeleteOptions={this.handleDeleteOptions}
-          handleDeleteOption={this.handleDeleteOption}
-        />
-        <AddOption 
-          handleAddOption = {this.handleAddOption}
-        />
+        <div className="container">
+          <Action hasOptions={this.state.options.length > 0} 
+          handlePick={this.handlePick}
+          />
+          <div className="widget">
+          <Options 
+            options={this.state.options} 
+            handleDeleteOptions={this.handleDeleteOptions}
+            handleDeleteOption={this.handleDeleteOption}
+          />
+          <AddOption 
+            handleAddOption = {this.handleAddOption}
+          />
+          </div>
+        </div>
         <OptionModal 
           selectedOption={this.state.selectedOption}
           clearModal={this.clearModal}
